@@ -1,0 +1,337 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>扬子新材 - 彩涂板知识平台</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f0f2f5;overflow:hidden;height:100vh}
+.app{max-width:480px;margin:0 auto;height:100vh;display:flex;flex-direction:column;background:#f0f2f5}
+.hd{background:#1a5276;padding:12px 16px;text-align:center;color:#fff;font-size:17px;font-weight:600;flex-shrink:0;position:relative}
+.hd .bk{position:absolute;left:8px;top:50%;transform:translateY(-50%);color:#fff;font-size:20px;cursor:pointer;display:none;background:none;border:none;padding:6px}
+.hd .bk.s{display:block}
+.hd .sr{position:absolute;right:8px;top:50%;transform:translateY(-50%);color:#fff;font-size:18px;cursor:pointer;background:none;border:none;padding:6px}
+.mn{flex:1;overflow-y:auto;padding-bottom:8px;-webkit-overflow-scrolling:touch}
+.mn::-webkit-scrollbar{width:0}
+.tb{background:#fff;border-top:1px solid #e8ecf1;display:flex;flex-shrink:0;height:54px}
+.ti{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;color:#7f8c8d;border:none;background:none;font-size:20px;gap:1px;padding:0;font-family:inherit;position:relative}
+.ti .lb{font-size:10px;font-weight:500}
+.ti.active{color:#1a5276}
+.ti.active::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:20px;height:2px;background:#1a5276;border-radius:0 0 2px 2px}
+.banner{height:160px;background:linear-gradient(135deg,#0e2f44,#1a5276);border-radius:0 0 20px 20px;margin-bottom:12px;display:flex;align-items:center;justify-content:center;color:#fff;text-align:center;padding:20px}
+.banner h2{font-size:20px;font-weight:700;margin-bottom:6px}
+.banner p{font-size:12px;opacity:.85;line-height:1.6}
+.sec{padding:0 14px;margin-bottom:12px}
+.st{display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:600;margin-bottom:10px}
+.st .mo{font-size:12px;color:#7f8c8d;font-weight:400;cursor:pointer}
+.qg{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.qi{background:#fff;border-radius:10px;padding:12px 4px;text-align:center;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.qi:active{transform:scale(.95)}
+.qi .ic{width:34px;height:34px;border-radius:8px;margin:0 auto 5px;display:flex;align-items:center;justify-content:center;font-size:16px}
+.qi .lb2{font-size:11px;font-weight:500;color:#2c3e50}
+.ac{background:#fff;border-radius:10px;padding:10px 12px;margin-bottom:8px;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.ac .at{font-size:14px;font-weight:600;margin-bottom:2px;color:#2c3e50}
+.ac .ad{font-size:11px;color:#7f8c8d;line-height:1.4}
+.ac .am{font-size:11px;color:#7f8c8d;margin-top:3px}
+.ac .am .tg{display:inline-block;background:#f0f2f5;padding:1px 5px;border-radius:3px;margin-right:4px;font-size:10px}
+.kc{display:flex;gap:6px;padding:10px 14px 6px;overflow-x:auto;scrollbar-width:none}
+.kc::-webkit-scrollbar{display:none}
+.kc .ci{flex-shrink:0;padding:5px 12px;border-radius:12px;font-size:12px;cursor:pointer;white-space:nowrap;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.kl{padding:0 14px}
+.ke{text-align:center;padding:40px 20px;color:#7f8c8d;font-size:14px}
+.sp{margin:10px 14px}
+.sp .sts{display:flex;background:#fff;border-radius:8px;overflow:hidden;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.sp .st2{flex:1;text-align:center;padding:8px;font-size:12px;cursor:pointer;color:#7f8c8d;font-weight:500}
+.sp .st2.active{background:#1a5276;color:#fff}
+.sw{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.sw table{width:100%;border-collapse:collapse;font-size:12px}
+.sw th{background:#1a5276;color:#fff;padding:8px;font-weight:500;text-align:left}
+.sw td{padding:8px;border-bottom:1px solid #e8ecf1}
+.sw tr:last-child td{border-bottom:none}
+.sw tr:nth-child(even) td{background:#f8f9fa}
+.cg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 14px}
+.ci2{background:#fff;border-radius:8px;overflow:hidden;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.ci2:active{transform:scale(.96)}
+.ci2 .cs{height:56px;display:flex;align-items:flex-end;padding:0 8px 3px;color:#fff;font-size:10px}
+.ci2 .cif{padding:5px 8px}
+.ci2 .nm{font-size:12px;font-weight:600;color:#2c3e50}
+.ci2 .cd2{font-size:10px;color:#7f8c8d;margin-top:1px}
+.ph{background:linear-gradient(135deg,#0e2f44,#1a5276);padding:24px 20px 18px;text-align:center;color:#fff;margin-bottom:10px}
+.ph .pa{width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.2);margin:0 auto 8px;display:flex;align-items:center;justify-content:center;font-size:22px}
+.ph h2{font-size:17px;font-weight:600;margin-bottom:3px}
+.ph p{font-size:11px;opacity:.8}
+.pm{padding:0 14px}
+.pmi{background:#fff;border-radius:8px;padding:12px 14px;margin-bottom:6px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.pmi:active{background:#f5f6f7}.pmi .l{display:flex;align-items:center;gap:8px;font-size:13px}.pmi .r{color:#7f8c8d;font-size:15px}
+.dc{background:#fff;border-radius:10px;padding:14px 16px;margin:10px 14px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.dc .dt{font-size:17px;font-weight:700;margin-bottom:5px;color:#2c3e50}
+.dc .dm{font-size:11px;color:#7f8c8d;padding-bottom:8px;border-bottom:1px solid #e8ecf1;margin-bottom:10px}
+.dc .db{font-size:14px;line-height:1.7;color:#333}
+.dc .db h3{font-size:15px;font-weight:600;margin:14px 0 6px;color:#1a5276}
+.dc .db h4{font-size:13px;font-weight:600;margin:10px 0 5px}
+.dc .db p{margin-bottom:6px}
+.dc .db ul,.dc .db ol{margin:4px 0;padding-left:16px}
+.dc .db li{margin-bottom:3px}
+.dc .db .hb{background:#eef5fb;border-left:3px solid #2980b9;padding:8px 12px;border-radius:4px;margin:8px 0;font-size:13px}
+.dc .db table{width:100%;border-collapse:collapse;margin:6px 0;font-size:12px}
+.dc .db th{background:#1a5276;color:#fff;padding:5px 7px;font-weight:500;text-align:left;font-size:11px}
+.dc .db td{padding:5px 7px;border:1px solid #e8ecf1}
+.df{display:flex;gap:10px;padding:0 14px 10px}
+.df .ab{flex:1;padding:8px;border:none;border-radius:6px;background:#fff;cursor:pointer;font-size:13px;box-shadow:0 1px 3px rgba(0,0,0,.05);font-family:inherit}
+.df .ab.lk{color:#e74c3c}.df .ab.fv{color:#e67e22}
+.toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(0,0,0,.75);color:#fff;padding:8px 16px;border-radius:6px;font-size:13px;z-index:200;opacity:0;transition:all .3s;pointer-events:none}
+.toast.s{opacity:1;transform:translateX(-50%) translateY(0)}
+.so{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:100;display:none}
+.so.s{display:flex;align-items:flex-start;justify-content:center}
+.so .sp2{background:#fff;width:100%;max-width:480px;border-radius:0 0 14px 14px;padding:48px 16px 16px}
+.so .siw{display:flex;gap:6px}
+.so .siw input{flex:1;height:40px;border:2px solid #2980b9;border-radius:20px;padding:0 14px;font-size:14px;outline:none;font-family:inherit}
+.so .siw .cb2{font-size:14px;color:#7f8c8d;cursor:pointer;border:none;background:none;padding:8px 4px;white-space:nowrap;font-family:inherit}
+.sr{margin-top:6px;max-height:350px;overflow-y:auto}
+.sri{padding:8px 0;border-bottom:1px solid #e8ecf1;cursor:pointer}
+.sri:last-child{border-bottom:none}
+.sri .tt{font-size:13px;font-weight:500;margin-bottom:2px}
+.sri .dd{font-size:11px;color:#7f8c8d}
+@media(min-width:481px){.app{border:1px solid #e8ecf1;border-top:none;border-bottom:none}}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="hd"><button class="bk" id="bkBtn" onclick="gb()">&#x2190;</button><span id="hT">彩涂板知识平台</span><button class="sr" id="srBtn" onclick="os()">&#x1F50D;</button></div>
+<div class="mn" id="mn"></div>
+<div class="tb">
+<button class="ti active" onclick="st(0)"><span>&#x1F3E0;</span><span class="lb">首页</span></button>
+<button class="ti" onclick="st(1)"><span>&#x1F4DA;</span><span class="lb">知识库</span></button>
+<button class="ti" onclick="st(2)"><span>&#x2699;</span><span class="lb">参数</span></button>
+<button class="ti" onclick="st(3)"><span>&#x1F3A8;</span><span class="lb">色卡</span></button>
+<button class="ti" onclick="st(4)"><span>&#x1F464;</span><span class="lb">我的</span></button>
+</div>
+<div class="so" id="sO" onclick="if(event.target==this)cs()">
+<div class="sp2"><div class="siw"><input type="text" id="sI" placeholder="搜索彩涂板知识..." oninput="ds(this.value)"><span class="cb2" onclick="cs()">取消</span></div><div class="sr" id="sR"><div style="text-align:center;padding:32px;color:#7f8c8d;font-size:13px">输入关键词搜索</div></div></div>
+</div>
+<div class="toast" id="tt"></div>
+</div>
+<script>const arts=[
+{id:1,cat:1,t:"热镀锌基板（GI）全面解析",d:"热镀锌基板是彩涂板最常用的基板类型，约占基板总量的70%以上。",c:"<h3>什么是热镀锌基板？</h3><p>将冷轧钢板经过连续热镀锌工艺处理，在表面形成锌镀层的产品。</p><h3>生产工艺</h3><p>开卷→脱脂→退火→热浸镀→气刀控厚→冷却→光整→钝化→收卷</p><div class=hb><strong>关键控制点：</strong>锌液温度450-470°C，气刀压力决定镀层厚度。</div><h3>镀层规格</h3><table><tr><th>代号</th><th>g/m2</th><th>用途</th></tr><tr><td>Z60</td><td>60</td><td>室内干燥</td></tr><tr><td>Z100</td><td>100</td><td>建筑外墙</td></tr><tr><td>Z140</td><td>140</td><td>高腐蚀</td></tr><tr><td>Z275</td><td>275</td><td>极端环境</td></tr></table>",v:1280,tg:["基板","热镀锌"]},
+{id:2,cat:1,t:"热镀铝锌基板（GL）优势与应用",d:"耐蚀性是纯镀锌的2-4倍，是高端彩涂板的首选基板。",c:"<h3>GL基板</h3><p>镀层成分：55%Al-43.4%Zn-1.6%Si，兼具铝的耐候性和锌的牺牲阳极保护。</p><table><tr><th>性能</th><th>GI</th><th>GL</th></tr><tr><td>耐腐蚀</td><td>良好</td><td>优秀(2-4倍)</td></tr><tr><td>耐热</td><td>~200C</td><td>~315C</td></tr><tr><td>反射率</td><td>中等</td><td>高(节能)</td></tr></table><p>适用于沿海高腐蚀地区、大型厂房、农业温室等。</p>",v:960,tg:["基板","铝锌"]},
+{id:3,cat:1,t:"冷轧基板与镀锌基板的区别",d:"了解差异有助于为不同应用场景选择最合适的基板类型。",c:"<h3>冷轧 vs 镀锌</h3><table><tr><th>对比项</th><th>冷轧(CR)</th><th>镀锌(GI/GL)</th></tr><tr><td>表面</td><td>裸钢</td><td>有镀层</td></tr><tr><td>耐腐蚀</td><td>依赖涂层</td><td>双重保护</td></tr><tr><td>成本</td><td>较低</td><td>较高</td></tr><tr><td>适用</td><td>室内干燥</td><td>室外/腐蚀</td></tr></table>",v:720,tg:["基板","冷轧"]},
+{id:4,cat:2,t:"彩涂板涂层体系深度解读",d:"PE、SMP、HDP、PVDF四大涂层特点与选型指南。",c:"<h3>四大主流涂层</h3><table><tr><th>类型</th><th>耐候</th><th>加工</th><th>质保</th></tr><tr><td>PE</td><td>2星</td><td>5星</td><td>5-8年</td></tr><tr><td>SMP</td><td>3星</td><td>4星</td><td>8-12年</td></tr><tr><td>HDP</td><td>4星</td><td>4星</td><td>12-15年</td></tr><tr><td>PVDF</td><td>5星</td><td>3星</td><td>20-25年</td></tr></table><p>PE经济耐用、SMP中端均衡、HDP高性价比、PVDF顶级耐候。</p>",v:2150,tg:["涂层","PE","SMP","HDP","PVDF"]},
+{id:5,cat:2,t:"PVDF氟碳涂层：高端建筑的保护层",d:"20年+耐候，机场、体育场馆等标志性建筑首选。",c:"<h3>PVDF氟碳涂层</h3><p>聚偏氟乙烯树脂，含氟量不低于70%，C-F键能485kJ/mol。</p><ul><li>佛罗里达暴晒10年E值变化小于5</li><li>耐温-40C至+150C</li><li>自洁性能优异</li></ul><div class=hb>通常提供20-25年品质保证。</div>",v:1850,tg:["涂层","PVDF"]},
+{id:6,cat:2,t:"HDP涂层：高性价比之选",d:"以PVDF约60%的成本获得约80%的耐候性能，中高端市场主流。",c:"<h3>HDP高耐久聚酯</h3><p>通过改进聚酯树脂配方，加入特殊耐候添加剂和UV吸收剂。</p><table><tr><th>对比</th><th>HDP</th><th>PVDF</th></tr><tr><td>相对成本</td><td>1.5x</td><td>2.5-3.0x</td></tr><tr><td>T弯</td><td>0-1T</td><td>1-2T</td></tr></table>",v:1430,tg:["涂层","HDP"]},
+{id:7,cat:3,t:"彩涂板色差控制技术",d:"E是衡量颜色一致性的核心指标，E小于1.0为人眼难分辨范围。",c:"<h3>色差控制</h3><p>色差(E)是彩涂板质量控制的命脉。</p><h4>产生原因</h4><ul><li>涂料批次差异</li><li>涂布工艺波动</li><li>烘烤温度变化</li></ul><div class=hb><strong>扬子新材标准：</strong>同批次E小于0.5，批次间E小于1.0</div><h4>控制措施</h4><ol><li>来料一单一检</li><li>小样涂布验证</li><li>在线实时监控</li></ol>",v:1680,tg:["色差","质量控制"]},
+{id:8,cat:3,t:"颜色标准体系在彩涂板中的应用",d:"RAL、NCS、PANTONE等颜色标准体系在行业中广泛应用。",c:"<h3>主流颜色标准</h3><table><tr><th>体系</th><th>特点</th></tr><tr><td>RAL</td><td>欧洲最普及，213色</td></tr><tr><td>NCS</td><td>科学色彩系统，1950色</td></tr><tr><td>PANTONE</td><td>设计行业，2000+色</td></tr></table><p>中国彩涂板行业最常用RAL色系，编码简洁、稳定。</p>",v:920,tg:["RAL","色卡"]},
+{id:9,cat:4,t:"彩涂板在建筑屋面上的应用",d:"轻质高强、色彩丰富、施工便捷，是现代建筑主流屋面材料。",c:"<h3>屋面选型指南</h3><table><tr><th>场景</th><th>基板</th><th>涂层</th></tr><tr><td>工业厂房</td><td>GI Z100</td><td>HDP</td></tr><tr><td>公共建筑</td><td>GL AZ150</td><td>PVDF</td></tr><tr><td>农业温室</td><td>GL AZ70</td><td>PE</td></tr></table><h4>安装要点</h4><ul><li>坡度不低于5%确保排水</li><li>搭接侧向不低于25mm</li><li>使用EPDM垫圈防渗</li></ul>",v:1340,tg:["屋面","建筑"]},
+{id:10,cat:4,t:"家电用彩涂板的特殊要求",d:"家电彩涂板对表面质量、加工精度有极高的要求。",c:"<h3>家电彩涂板</h3><table><tr><th>指标</th><th>家电</th><th>建筑</th></tr><tr><td>T弯</td><td>0T</td><td>1-3T</td></tr><tr><td>硬度</td><td>不低于3H</td><td>不低于1H</td></tr><tr><td>耐化学品</td><td>耐油/洗涤剂</td><td>耐酸雨</td></tr></table><p>冰箱面板、洗衣机外壳、空调室外机等白色家电应用。</p>",v:860,tg:["家电","PCM"]},
+{id:11,cat:5,t:"彩涂板国家标准 GB/T 12754 解读",d:"彩涂板核心国标，解读分类体系、技术要求和检测方法。",c:"<h3>GB/T 12754-2019</h3><p>最新版本，规定了彩涂板分类、代号和技术要求。</p><h4>关键技术指标</h4><ul><li>外用涂层不低于20um，内用不低于15um</li><li>JW级弯曲不超过3T</li><li>耐盐雾JW不低于480h</li></ul><div class=hb>扬子新材内控：外用涂层不低于25um，耐盐雾不低于720h</div>",v:1560,tg:["标准","GB/T"]},
+{id:12,cat:5,t:"彩涂板常见质量缺陷与对策",d:"气泡、针孔、橘皮、色差、划伤……成因与解决方案。",c:"<h3>常见缺陷</h3><table><tr><th>缺陷</th><th>原因</th><th>对策</th></tr><tr><td>气泡</td><td>水分未除尽</td><td>控温</td></tr><tr><td>针孔</td><td>消泡不良</td><td>调配方</td></tr><tr><td>橘皮</td><td>流平性差</td><td>调黏度</td></tr><tr><td>色差</td><td>批次波动</td><td>来料检</td></tr><tr><td>划伤</td><td>导辊磨损</td><td>换辊</td></tr></table>",v:2030,tg:["质量","缺陷"]},
+{id:13,cat:6,t:"彩涂板生产工艺全流程",d:"从开卷到包装的全流程解析，了解关键工艺控制点。",c:"<h3>工艺流程</h3><div class=hb>开卷→前处理→化涂→初涂→精涂→检验→覆膜→收卷</div><h4>关键参数</h4><table><tr><th>参数</th><th>范围</th></tr><tr><td>线速度</td><td>60-120 m/min</td></tr><tr><td>初涂PMT</td><td>210-224C</td></tr><tr><td>精涂PMT</td><td>232-249C</td></tr><tr><td>涂布辊压力</td><td>0.3-0.8 MPa</td></tr></table>",v:1170,tg:["工艺","生产"]},
+{id:14,cat:7,t:"彩涂板存储与运输注意事项",d:"正确的存储运输方式对保护彩涂板品质至关重要。",c:"<h3>存储规范</h3><table><tr><th>项目</th><th>要求</th></tr><tr><td>湿度</td><td>不超过70%</td></tr><tr><td>温度</td><td>5-45C</td></tr><tr><td>堆放</td><td>竖立，离地不低于100mm</td></tr><tr><td>覆膜产品</td><td>避光，不超过6个月</td></tr></table><div class=hb>严禁用钢丝绳直接起吊！可能导致整卷报废。</div>",v:780,tg:["存储","运输"]},
+{id:15,cat:7,t:"彩涂板加工常见问题解答",d:"剪切毛刺、冲孔开裂、折弯涂层脱落等问题一网打尽。",c:"<h3>Q&A</h3><h4>Q: 折弯涂层裂纹？</h4><p>A: 折弯半径不低于2倍板厚；低于10C预热。</p><h4>Q: 剪切毛刺大？</h4><p>A: 刀片间隙调为板厚10-15%。</p><h4>Q: 切口生锈？</h4><p>A: 涂抹防锈漆，沿海用GL基板。</p><h4>Q: 冲孔崩裂？</h4><p>A: 检查冲头间隙，涂层T弯应不超过2T。</p>",v:1120,tg:["加工","FAQ"]},
+{id:16,cat:8,t:"2026年彩涂板行业发展趋势",d:"绿色低碳、高性能涂层、数字化生产——行业正经历新变革。",c:"<h3>五大趋势</h3><ol><li><strong>绿色低碳：</strong>低温固化涂料降能耗30-50C</li><li><strong>高性能涂层：</strong>自清洁、隔热、抗菌</li><li><strong>数字化：</strong>AI检测缺陷检出率超过99%</li><li><strong>新场景：</strong>装配式建筑、充电桩</li><li><strong>扬子新材：</strong>布局HDP和PVDF高端线</li></ol>",v:650,tg:["行业","趋势"]},
+{id:17,cat:8,t:"功能型彩涂板：从基础保护到智能响应",d:"自清洁、隔热、抗菌、变色——功能型彩涂板重新定义能力边界。",c:"<h3>功能型彩涂板</h3><table><tr><th>类型</th><th>原理</th><th>应用</th></tr><tr><td>自清洁</td><td>TiO2光催化</td><td>幕墙</td></tr><tr><td>隔热</td><td>高反射颜料</td><td>厂房</td></tr><tr><td>抗菌</td><td>银离子</td><td>医疗</td></tr><tr><td>防静电</td><td>导电填料</td><td>电子厂房</td></tr><tr><td>耐指纹</td><td>特殊表面处理</td><td>家电</td></tr></table>",v:540,tg:["功能","新材料"]}
+];
+const cats=[{id:0,n:"全部"},{id:1,n:"基板知识"},{id:2,n:"涂层体系"},{id:3,n:"色彩管理"},{id:4,n:"应用领域"},{id:5,n:"质量标准"},{id:6,n:"生产工艺"},{id:7,n:"常见问题"},{id:8,n:"行业动态"}];
+const cols=[{nm:"信号白",cd:"RAL 9003",hx:"#ECECE8",ct:"白",gs:"高光"},{nm:"白铝色",cd:"RAL 9006",hx:"#A5A8A6",ct:"灰",gs:"金属"},{nm:"银灰",cd:"RAL 7001",hx:"#8A9597",ct:"灰",gs:"中光"},{nm:"纯白",cd:"RAL 9010",hx:"#F2EFE7",ct:"白",gs:"高光"},{nm:"鸽蓝",cd:"RAL 5014",hx:"#5B7F9B",ct:"蓝",gs:"中光"},{nm:"天空蓝",cd:"RAL 5015",hx:"#2273B0",ct:"蓝",gs:"高光"},{nm:"宝蓝",cd:"RAL 5002",hx:"#1C3F7A",ct:"蓝",gs:"高光"},{nm:"深蓝",cd:"RAL 5020",hx:"#1B3D61",ct:"蓝",gs:"哑光"},{nm:"氧化红",cd:"RAL 3009",hx:"#6E3C34",ct:"红",gs:"哑光"},{nm:"朱红",cd:"RAL 2002",hx:"#BD3B2C",ct:"红",gs:"高光"},{nm:"苔绿",cd:"RAL 6005",hx:"#2C3E2D",ct:"绿",gs:"哑光"},{nm:"翡翠绿",cd:"RAL 6001",hx:"#3E6B3E",ct:"绿",gs:"中光"},{nm:"巧克力棕",cd:"RAL 8017",hx:"#44332D",ct:"棕",gs:"哑光"},{nm:"咖啡棕",cd:"RAL 8004",hx:"#8D4E3B",ct:"棕",gs:"中光"},{nm:"香槟金",cd:"RM03",hx:"#D2B48C",ct:"金属",gs:"金属"},{nm:"古铜",cd:"RM05",hx:"#834F3C",ct:"金属",gs:"金属"}];
+const about={id:0,cat:-1,t:"关于彩涂板知识平台",d:"扬子新材技术中心打造的行业知识分享平台",c:"<h3>关于本平台</h3><p>由扬子新材技术中心打造的彩涂板行业知识分享平台。</p><p>内容覆盖基板知识、涂层体系、色彩管理、应用领域、质量标准、生产工艺、行业动态等。</p><div class=hb>扬子新材——中国领先的彩涂板生产企业</div>",v:0,tg:["平台"]};
+const spD={ss:[{c:"GI Z100",n:"热镀锌基板",z:"Z100",t:"0.3-2.0"},{c:"GI Z140",n:"热镀锌基板",z:"Z140",t:"0.3-2.0"},{c:"GL AZ100",n:"热镀铝锌",z:"AZ100",t:"0.3-2.0"},{c:"CR",n:"冷轧基板",z:"无",t:"0.3-2.0"}],cs:[{c:"PE",n:"聚酯涂层",f:">=20",g:"30-85",w:"5-8年"},{c:"SMP",n:"硅改性聚酯",f:">=20",g:"30-70",w:"8-12年"},{c:"HDP",n:"高耐久聚酯",f:">=25",g:"30-60",w:"12-15年"},{c:"PVDF",n:"氟碳涂层",f:">=25",g:"20-50",w:"20-25年"}]};
+let ct=0,cc=0,csT=0,cd=null;
+let fav=JSON.parse(localStorage.getItem("yzF")||"[]");
+let lik=JSON.parse(localStorage.getItem("yzL")||"[]");
+document.addEventListener("DOMContentLoaded",function(){st(0);});
+function st(i){
+  ct=i;
+  document.querySelectorAll(".ti").forEach(function(t){t.classList.remove("active");});
+  document.querySelectorAll(".ti")[i].classList.add("active");
+  document.getElementById("hT").textContent=["彩涂板知识平台","知识库","产品参数","色卡中心","我的"][i];
+  document.getElementById("bkBtn").classList.remove("s");
+  document.getElementById("srBtn").style.display="";
+  var mn=document.getElementById("mn");
+  if(i===0){rH();}
+  else if(i===1){rKC();}
+  else if(i===2){rSp();}
+  else if(i===3){rCol();}
+  else if(i===4){rP();}
+}
+function nk(a){cc=a+1;st(1);}
+function acH(a){
+  var cn="";
+  if(a.cat>0){var found=cats.find(function(c){return c.id===a.cat;});if(found)cn=found.n;}
+  return '<div class=ac onclick="sd('+a.id+')"><div class=at>'+a.t+'</div><div class=ad>'+a.d+'</div><div class=am><span class=tg>'+cn+'</span> &#x1F441; '+a.v+'次</div></div>';
+}
+function rH(){
+  var mn=document.getElementById("mn");
+  var html='<div class=banner><div><h2>彩涂板知识平台</h2><p>扬子新材 &#xB7; 专业彩涂板技术知识分享</p></div></div>';
+  html+='<div class=sec><div class=st><span>知识分类</span><span class=mo onclick="nk(0)">全部&gt;</span></div><div class=qg>';
+  html+='<div class=qi onclick="nk(0)"><div class=ic style="background:#e8f4f8">&#x1F3D7;</div><div class=lb2>基板知识</div></div>';
+  html+='<div class=qi onclick="nk(1)"><div class=ic style="background:#fef3e2">&#x1F3A8;</div><div class=lb2>涂层体系</div></div>';
+  html+='<div class=qi onclick="nk(2)"><div class=ic style="background:#fce4ec">&#x1F308;</div><div class=lb2>色彩管理</div></div>';
+  html+='<div class=qi onclick="nk(3)"><div class=ic style="background:#e8f5e9">&#x1F3E2;</div><div class=lb2>应用领域</div></div>';
+  html+='<div class=qi onclick="nk(4)"><div class=ic style="background:#f3e5f5">&#x2B50;</div><div class=lb2>质量标准</div></div>';
+  html+='<div class=qi onclick="nk(5)"><div class=ic style="background:#e0f2f1">&#x2699;</div><div class=lb2>生产工艺</div></div>';
+  html+='<div class=qi onclick="nk(6)"><div class=ic style="background:#e8f4f8">&#x1F4CB;</div><div class=lb2>常见问题</div></div>';
+  html+='<div class=qi onclick="nk(7)"><div class=ic style="background:#fce4ec">&#x1F4F0;</div><div class=lb2>行业动态</div></div>';
+  html+='</div></div><div class=sec><div class=st><span>热门推荐</span></div></div><div class=sec>';
+  var hot=arts.slice().sort(function(a,b){return b.v-a.v;}).slice(0,4);
+  for(var h=0;h<hot.length;h++){html+=acH(hot[h]);}
+  html+='</div>';
+  mn.innerHTML=html;
+}
+function rKC(){
+  var mn=document.getElementById("mn");
+  var html='<div class=kc>';
+  for(var k=0;k<cats.length;k++){
+    var bg=k===cc?"#1a5276":"#fff";
+    var cl=k===cc?"#fff":"#2c3e50";
+    html+='<span class=ci style="background:'+bg+';color:'+cl+'" onclick="sKC('+k+')">'+cats[k].n+'</span>';
+  }
+  html+='</div><div class=kl id=kL></div>';
+  mn.innerHTML=html;
+  rKL();
+}
+function sKC(i){cc=i;rKC();}
+function rKL(){
+  var f=cc>0?arts.filter(function(a){return a.cat===cc;}):arts;
+  var el=document.getElementById("kL");
+  if(!el)return;
+  if(f.length===0){el.innerHTML='<div class=ke>暂无文章</div>';return;}
+  var h="";
+  for(var i=0;i<f.length;i++){h+=acH(f[i]);}
+  el.innerHTML=h;
+}
+function rSp(){
+  var mn=document.getElementById("mn");
+  mn.innerHTML='<div class=sp><div class=sts><div class="st2 active" onclick="sST(0)">基板规格</div><div class=st2 onclick="sST(1)">涂层规格</div></div><div class=sw><table><thead><tr id=sH></tr></thead><tbody id=sB></tbody></table></div></div><div class=sec style="margin-top:14px"><div class=st><span>涂层性能对比</span></div></div><div style="padding:0 14px"><div class=sw><table><thead><tr id=cH></tr></thead><tbody id=cB></tbody></table></div></div>';
+  sST(0);rCT();
+}
+function sST(i){
+  csT=i;
+  var sts=document.querySelectorAll(".sts .st2");
+  for(var s=0;s<sts.length;s++){sts[s].classList.toggle("active",s===i);}
+  var h=document.getElementById("sH"),b=document.getElementById("sB");
+  if(i===0){
+    h.innerHTML="<th>牌号</th><th>基板类型</th><th>镀层</th><th>厚度</th>";
+    var r="";
+    for(var s2=0;s2<spD.ss.length;s2++){var x=spD.ss[s2];r+="<tr><td>"+x.c+"</td><td>"+x.n+"</td><td>"+x.z+"</td><td>"+x.t+" mm</td></tr>";}
+    b.innerHTML=r;
+  }else{
+    h.innerHTML="<th>涂层</th><th>类型</th><th>膜厚</th><th>光泽</th>";
+    var r2="";
+    for(var s3=0;s3<spD.cs.length;s3++){var y=spD.cs[s3];r2+='<tr><td style="color:#e67e22;font-weight:600">'+y.c+'</td><td>'+y.n+'</td><td>'+y.f+'um</td><td>'+y.g+'</td></tr>';}
+    b.innerHTML=r2;
+  }
+}
+function rCT(){
+  var h=document.getElementById("cH"),b=document.getElementById("cB");
+  if(!h||!b)return;
+  h.innerHTML="<th>性能</th><th>PE</th><th>SMP</th><th>HDP</th><th>PVDF</th>";
+  var rows=[["硬度",">=1H",">=2H",">=2H",">=1H"],["T弯","<=3T","<=3T","<=2T","<=2T"],["耐盐雾",">=240h",">=360h",">=480h",">=1000h"],["质保","5-8年","8-12年","12-15年","20-25年"]];
+  var r="";
+  for(var i=0;i<rows.length;i++){r+="<tr>";for(var j=0;j<rows[i].length;j++){r+="<td>"+rows[i][j]+"</td>";}r+="</tr>";}
+  b.innerHTML=r;
+}
+function rCol(){
+  var mn=document.getElementById("mn");
+  var h="<div class=cg>";
+  for(var i=0;i<cols.length;i++){
+    var x=cols[i];
+    h+='<div class=ci2 onclick="tt(\''+x.nm+'('+x.cd+')\')"><div class=cs style="background:'+x.hx+'">'+x.cd+'</div><div class=cif><div class=nm>'+x.nm+'</div><div class=cd2>'+x.gs+'</div></div></div>';
+  }
+  h+="</div>";
+  mn.innerHTML=h;
+}
+function rP(){
+  var mn=document.getElementById("mn");
+  mn.innerHTML='<div class=ph><div class=pa>&#x1F468;&#x200D;&#x1F4BB;</div><h2>扬子新材技术中心</h2><p>专业 &#xB7; 精准 &#xB7; 高效</p></div><div class=pm>'+
+  '<div class=pmi onclick="sf()"><div class=l>&#x2B50; 我的收藏</div><div class=r id=fC>'+fav.length+'</div></div>'+
+  '<div class=pmi onclick="sA()"><div class=l>&#x2139; 关于平台</div><div class=r>&#x203A;</div></div>'+
+  '<div class=pmi onclick="cf()"><div class=l>&#x1F5D1; 清除收藏</div><div class=r>&#x203A;</div></div></div>'+
+  '<div style="text-align:center;padding:20px 16px;font-size:11px;color:#7f8c8d">扬子新材 &copy; 2026 v1.0</div>';
+}
+function sf(){
+  var fa=arts.filter(function(a){return fav.indexOf(a.id)>=0;});
+  if(fa.length===0){tt("暂无收藏");return;}
+  sDL(fa,"我的收藏");
+}
+function cf(){
+  if(fav.length===0){tt("收藏为空");return;}
+  if(!confirm("确定清除所有收藏？"))return;
+  fav=[];localStorage.setItem("yzF",JSON.stringify(fav));rP();tt("已清除");
+}
+function sA(){sd(about);}
+function sd(a){
+  if(!a)return;
+  cd=a;
+  var mn=document.getElementById("mn");
+  var isF=fav.indexOf(a.id)>=0,isL=lik.indexOf(a.id)>=0;
+  document.getElementById("hT").textContent="文章详情";
+  document.getElementById("bkBtn").classList.add("s");
+  document.getElementById("srBtn").style.display="none";
+  document.querySelectorAll(".ti").forEach(function(t){t.classList.remove("active");});
+  var tagsHtml="";
+  if(a.tg){for(var i=0;i<a.tg.length;i++){tagsHtml+='<span style="background:#f0f2f5;padding:1px 6px;border-radius:3px;margin-right:4px;font-size:11px">#'+a.tg[i]+'</span>';}}
+  mn.innerHTML='<div class=dc><div class=dt>'+a.t+'</div><div class=dm>'+tagsHtml+' &#x1F441; '+a.v+'次</div><div class=db>'+a.c+'</div></div><div class=df>'+
+    '<button class="ab'+(isL?" lk":"")+'" onclick="tl('+a.id+')">'+(isL?"&#x2764;":"&#x2661;")+' 点赞</button>'+
+    '<button class="ab'+(isF?" fv":"")+'" onclick="tf('+a.id+')">'+(isF?"&#x2B50;":"&#x2606;")+' 收藏</button></div>';
+  mn.scrollTop=0;
+}
+function sDL(items,title){
+  cd=null;
+  document.getElementById("hT").textContent=title;
+  document.getElementById("bkBtn").classList.add("s");
+  document.getElementById("srBtn").style.display="none";
+  document.querySelectorAll(".ti").forEach(function(t){t.classList.remove("active");});
+  var h="<div class=sec>";
+  for(var i=0;i<items.length;i++){h+=acH(items[i]);}
+  h+="</div>";
+  document.getElementById("mn").innerHTML=h;
+}
+function gb(){
+  cd=null;
+  document.getElementById("bkBtn").classList.remove("s");
+  document.getElementById("srBtn").style.display="";
+  st(ct);
+}
+function tl(id){
+  var i=lik.indexOf(id);
+  if(i>=0){lik.splice(i,1);}else{lik.push(id);}
+  localStorage.setItem("yzL",JSON.stringify(lik));
+  sd(arts.find(function(a){return a.id===id;}));
+  tt(lik.indexOf(id)>=0?"已点赞":"取消");
+}
+function tf(id){
+  var i=fav.indexOf(id);
+  if(i>=0){fav.splice(i,1);}else{fav.push(id);}
+  localStorage.setItem("yzF",JSON.stringify(fav));
+  sd(arts.find(function(a){return a.id===id;}));
+  tt(fav.indexOf(id)>=0?"已收藏":"取消");
+}
+function os(){
+  document.getElementById("sO").classList.add("s");
+  document.getElementById("sI").value="";
+  document.getElementById("sI").focus();
+  document.getElementById("sR").innerHTML='<div style="text-align:center;padding:32px;color:#7f8c8d;font-size:13px">输入关键词搜索</div>';
+}
+function cs(){document.getElementById("sO").classList.remove("s");}
+function ds(q){
+  var r=document.getElementById("sR");
+  var q2=q.trim().toLowerCase();
+  if(!q2){r.innerHTML='<div style="text-align:center;padding:32px;color:#7f8c8d;font-size:13px">输入关键词搜索</div>';return;}
+  var f=arts.filter(function(a){
+    return a.t.toLowerCase().indexOf(q2)>=0||a.d.toLowerCase().indexOf(q2)>=0||(a.tg||[]).some(function(t){return t.toLowerCase().indexOf(q2)>=0;});
+  });
+  if(f.length===0){r.innerHTML='<div style="text-align:center;padding:32px;color:#7f8c8d;font-size:13px">未找到相关文章</div>';return;}
+  var h="";
+  for(var i=0;i<f.length;i++){
+    h+='<div class=sri onclick="cs();sd('+f[i].id+')"><div class=tt>'+f[i].t+'</div><div class=dd>'+f[i].d.substring(0,50)+'...</div></div>';
+  }
+  r.innerHTML=h;
+}
+function tt(m){
+  var t=document.getElementById("tt");
+  t.textContent=m;t.classList.add("s");
+  if(t._t)clearTimeout(t._t);
+  t._t=setTimeout(function(){t.classList.remove("s");},1800);
+}
+</script></body></html>
+
