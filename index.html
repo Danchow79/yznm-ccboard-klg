@@ -119,7 +119,7 @@ let ct=0,cc=0,cd=null;
 let fav=JSON.parse(localStorage.getItem("yzF")||"[]");
 let lik=JSON.parse(localStorage.getItem("yzL")||"[]");
 document.addEventListener("DOMContentLoaded",function(){st(0);});
-function st(i){try{alert('Tab:'+i+',active='+document.querySelectorAll('#tb .ti').length);
+function st(i){
   ct=i;
   var tabs=document.querySelectorAll("#tb .ti");
   for(var t2=0;t2<tabs.length;t2++){tabs[t2].classList.remove("act");}
@@ -129,7 +129,7 @@ function st(i){try{alert('Tab:'+i+',active='+document.querySelectorAll('#tb .ti'
   document.getElementById("bkBtn").classList.remove("s");
   document.getElementById("srBtn").style.display="";
   if(i===0){rH();}else if(i===1){rKC();}else if(i===2){rSp();}else if(i===3){rCol();}else{rP();}
-}catch(e){alert('Error:'+e.message)}}
+}
 function rH(){
   var h="<div class=banner><div><h2>彩涂板知识平台</h2><p>扬子新材 · 专业彩涂板技术知识分享</p></div></div>";
   h+="<div class=sec><div class=st><span>知识分类</span></div><div class=qg>";
@@ -146,7 +146,7 @@ function rH(){
   document.getElementById("mn").innerHTML=h;
 }
 function acH(a){
-  var cn="";if(a.cat>0){var f=cats.find(function(c){return c.id===a.cat;});if(f){cn=f.n;}}
+  var cn="";if(a.cat>0){var f=cats.find(function(c){return c.id===a.cat;});if(f){cn=f.n;}
   return "<div class=ac onclick='sd("+a.id+")'><div class=at>"+a.t+"</div><div class=ad>"+a.d+"</div><div class=am><span class=tg>"+cn+"</span></div></div>";
 }
 function nk(i){cc=i;st(1);}
@@ -209,7 +209,7 @@ function sf(){
 function cf(){if(fav.length===0){tt("收藏为空");return;}if(!confirm("确定清除？"))return;fav=[];localStorage.setItem("yzF",JSON.stringify(fav));rP();tt("已清除");}
 function sA(){var a=about;showArticle(a);}
 function sd(id){
-  if(typeof id==="number"){var a=arts.find(function(x){return x.id===id;});if(a){showArticle(a);}}
+  if(typeof id==="number"){var a=arts.find(function(x){return x.id===id;});if(a){showArticle(a);}
 }
 function showArticle(a){
   if(!a)return;
@@ -218,7 +218,7 @@ function showArticle(a){
   document.getElementById("hT").innerHTML="文章详情";
   document.getElementById("bkBtn").classList.add("s");
   document.getElementById("srBtn").style.display="none";
-  var tg="";if(a.tg){for(var i=0;i<a.tg.length;i++){tg+="<span class=tg>#"+a.tg[i]+"</span>";}}
+  var tg="";if(a.tg){for(var i=0;i<a.tg.length;i++){tg+="<span class=tg>#"+a.tg[i]+"</span>";}
   document.getElementById("mn").innerHTML="<div class=dc><div class=dt>"+a.t+"</div><div class=dm>"+tg+"</div><div class=db>"+a.c+"</div></div><div class=df>"+
     "<div class='ab"+(isL?" lk":"")+"' onclick='tl("+a.id+")'>"+(isL?"❤":"♡")+" 点赞</div>"+
     "<div class='ab"+(isF?" fv":"")+"' onclick='tf("+a.id+")'>"+(isF?"⭐":"☆")+" 收藏</div></div>";
